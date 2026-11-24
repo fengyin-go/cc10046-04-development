@@ -15,7 +15,7 @@ class CrawlAuditService(BaseModuleService):
     NEGATIVE_ACTIONS = []
 
     def domain_audit(self, operation_type: str, target: str,
-                     operator: str = "system") -> dict:
+                     operator: str = "system", summary: str | None = None) -> dict:
         """记录采集操作审计日志。"""
         from app.store import store
         import time
@@ -23,14 +23,14 @@ class CrawlAuditService(BaseModuleService):
         now = time.strftime("%Y-%m-%d")
         entry = {
             "id": max((int(r.get("id", 0)) for r in rows), default=0) + 1,
-            "记录标识": f"AUDIT-{int(time.time())}",
+            "记录标识": f"AUDIT-{int(time.time()*1000)}-{len(rows)+1}",
             "操作类型": operation_type,
             "操作对象": target,
             "操作时间": now,
             "操作人": operator,
             "变更前值": "",
             "变更后值": operation_type,
-            "审计摘要": f"{operator} 执行了 {operation_type} 操作于 {target}",
+            "审计摘要": summary or f"{operator} 执行了 {operation_type} 操作于 {target}",
             "status": "已记录",
             "pending": True,
             "abnormal": False,

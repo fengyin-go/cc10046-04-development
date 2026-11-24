@@ -1,0 +1,5 @@
+# 测试依赖：运行 requirements.txt 之外，额外安装本文件即可执行 tests/。
+# 安装：.venv/bin/pip install -r requirements-dev.txt
+-r requirements.txt
+pytest==9.2.0
+httpx==0.28.1

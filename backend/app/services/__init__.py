@@ -23,6 +23,7 @@ from app.services.incremental_sync import IncrementalSyncService
 from app.services.error_logger import ErrorLoggerService
 from app.services.session_manager import SessionManagerService
 from app.services.data_cleanup import DataCleanupService
+from app.services.source_attribution import SourceAttributionService
 
 SERVICES: dict[str, BaseModuleService] = {
     "crawler_config": CrawlerConfigService(),
@@ -46,6 +47,7 @@ SERVICES: dict[str, BaseModuleService] = {
     "error_logger": ErrorLoggerService(),
     "session_manager": SessionManagerService(),
     "data_cleanup": DataCleanupService(),
+    "source_attribution": SourceAttributionService(),
 }
 
 

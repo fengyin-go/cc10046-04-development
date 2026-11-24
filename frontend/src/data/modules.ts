@@ -200,6 +200,17 @@ export const MODULES: ModuleMeta[] = [
     actionTargets: {"触发同步": "待启动", "重置水位": "同步中断"},
     metrics: ["水位总数", "已同步水位", "待启动水位"],
   },
+  {
+    key: "source_attribution",
+    name: "来源归属",
+    entity: "来源归属记录",
+    desc: "把采集原始行按批次标签归属给收件人，管理来源确认、撤回与归属交付",
+    fields: ["归属标识", "批次标签", "货号", "来源方", "收件人", "原始行标识", "确认状态", "确认时间"],
+    statuses: ["待确认", "已确认", "已撤回"],
+    actions: ["标记复核"],
+    actionTargets: {"标记复核": "已确认"},
+    metrics: ["归属记录总数", "已确认记录", "待确认记录"],
+  },
 ]
 
 export const MODULE_BY_KEY: Map<string, ModuleMeta> = new Map(
